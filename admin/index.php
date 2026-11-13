@@ -413,8 +413,10 @@ $result = mysqli_query(
             reader.onload = function (e) {
                 if (currentPhoto) {
                     currentPhoto.src = e.target.result;
-                }
-                if (newPhoto) {
+                    if (currentPhoto.previousElementSibling) {
+                        currentPhoto.previousElementSibling.textContent = 'Ảnh đã chọn';
+                    }
+                } else if (newPhoto) {
                     newPhoto.src = e.target.result;
                     newPhoto.classList.remove('is-hidden');
                     newPhotoLabel.classList.remove('is-hidden');
