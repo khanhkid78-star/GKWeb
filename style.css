@@ -78,12 +78,23 @@ img {
     cursor: pointer;
     line-height: 1.2;
     max-width: 100%;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .btn-dark { background: var(--primary); color: #fff; }
 .btn-cancel { background: #f3f4f6; color: #374151; }
 .btn-edit { background: #eff6ff; color: #1d4ed8; }
 .btn-delete { background: #fef2f2; color: #dc2626; }
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.04);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
 
 .intro {
     width: 100%;
@@ -258,6 +269,7 @@ footer {
     border: 1px solid #fde68a;
     border-radius: 8px;
     color: #92400e;
+    animation: fadeUp 0.3s ease;
 }
 
 .table-wrapper {
@@ -296,6 +308,7 @@ th {
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid var(--border);
+    transition: transform 0.2s ease;
 }
 
 .action-buttons {
@@ -395,4 +408,46 @@ img.current-photo {
     font-size: 13px;
     color: #6b7280;
     margin-top: 4px;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+main {
+    animation: fadeUp 0.35s ease;
+}
+
+.admin-form:not(.is-hidden) {
+    animation: fadeUp 0.28s ease;
+}
+
+tbody tr {
+    animation: fadeUp 0.32s ease both;
+}
+
+tbody tr:nth-child(2) { animation-delay: 0.03s; }
+tbody tr:nth-child(3) { animation-delay: 0.06s; }
+tbody tr:nth-child(4) { animation-delay: 0.09s; }
+tbody tr:nth-child(5) { animation-delay: 0.12s; }
+tbody tr:nth-child(6) { animation-delay: 0.15s; }
+tbody tr:nth-child(7) { animation-delay: 0.18s; }
+tbody tr:nth-child(8) { animation-delay: 0.21s; }
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+tbody tr:hover .table-image {
+    transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main,
+    .message,
+    .admin-form,
+    tbody tr {
+        animation: none;
+    }
 }
